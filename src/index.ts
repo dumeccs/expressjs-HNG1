@@ -10,7 +10,7 @@ app.use(express.raw({ type: "application/vnd.custom-type" }));
 app.use(express.text({ type: "text/html" }));
 
 app.get("/", async (req, res) => {
-  res.json({ message: "Please visit /countries to view all the countries" });
+  res.json({ "slackUsername": "Pauli", "backend": true, "age": 26, "bio": "I am a backend dev and I want to be awesome at it" });
 });
 
 app.use("/countries", countryRoutes);
