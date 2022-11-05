@@ -3,8 +3,9 @@ import express from "express";
 import countryRoutes from "./routes/country";
 
 const app = express();
-const port = process.env.PORT || 3333;
 const cors = require('cors');
+const port = process.env.PORT || 3333;
+
 
 app.use(express.json());
 app.use(express.raw({ type: "application/vnd.custom-type" }));
