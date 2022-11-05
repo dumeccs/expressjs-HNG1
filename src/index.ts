@@ -13,7 +13,7 @@ app.use(express.text({ type: "text/html" }));
 app.use(cors())
 
 
-app.use("/countries", countryRoutes);
+app.use("/", countryRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on:${port}`);
