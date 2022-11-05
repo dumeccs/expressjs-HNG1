@@ -6,10 +6,10 @@ const routes = Router();
 routes.get('/', (req, res) =>{
     try{
         res.status(200).json({
-            "slackUsername":"JerryG",
+            "slackUsername":"Pauli",
             "backend": true,
-            "age": 24,
-            "bio": "I'm a self-taught developer looking to break into tech. Javascript is my love language."
+            "age": 26,
+            "bio": "I am paul a backend developer and I want to be awesome at it."
         })
     }catch(error){
         res.status(500).json(error)
