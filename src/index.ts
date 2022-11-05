@@ -26,7 +26,7 @@ app.get('/', (req, res) =>{
     }
 })
 
-app.post('/', (req,res) => {
+app.post('/post', (req,res) => {
   
     try{
     let result = 0
@@ -48,6 +48,7 @@ app.post('/', (req,res) => {
     res.status(200).json({
         "slackUsername":"JerryG",
         "result": result,
+        "operation_type" : req.body
         // "operation_type": req.body.operation_type
     })
 }catch(error){
