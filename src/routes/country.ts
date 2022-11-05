@@ -3,44 +3,36 @@ import { CountryModel, ICountry } from "../models/country";
 
 const routes = Router();
 
-routes.get('/', (req, res) =>{
-    try{
-        res.status(200).json({
-            "slackUsername":"Pauli",
-            "backend": true,
-            "age": 26,
-            "bio": "I am paul a backend developer and I want to be awesome at it."
-        })
-    }catch(error){
-        res.status(500).json(error)
-    }
-})
+routes.get("/", async (req, res) => {
+  try {
+    const countries: ICountry[] = await CountryModel.find().exec();
+    return res.json(countries);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Sorry, something went wrong :/" });
+  }
+});
 
-routes.post('/', (req,res) => {
-  
-    try{
-    let result = 0
-    switch(req.body.operation_type){
-        case "addition":
-        result = req.body.x + req.body.y 
-        break;
-        case "subtraction":
-        result = req.body.x - req.body.y 
-        break;
-        case "multiplication":
-        result = req.body.x * req.body.y 
-        break;
-        default: 
-        result = 0
+routes.post("/", async (req, res) => {
+  try {
+    const country: ICountry = req.body;
+
+    const countryExists = await CountryModel.findOne({
+      name: country.name,
+    }).exec();
+
+    if (countryExists) {
+      return res
+        .status(409)
+        .json({ error: "There is already another country with this name" });
     }
-    res.status(200).json({
-        "slackUsername":"Pauli",
-        "result": result,
-        "operation_type": req.body.operation_type
-    })
-}catch(error){
-    res.status(500).json(error)
-}
+
+    const newCountry = await CountryModel.create(country);
+    return res.status(201).json(newCountry);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Sorry, something went wrong :/" });
+  }
 });
 
 export default routes;
