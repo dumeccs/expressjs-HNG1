@@ -3,14 +3,17 @@ import { CountryModel, ICountry } from "../models/country";
 
 const routes = Router();
 
-routes.get("/", async (req, res) => {
-  try {
-    const countries: ICountry[] = await CountryModel.find().exec();
-    return res.json(countries);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: "Sorry, something went wrong :/" });
-  }
+routes.get("/",(req, res) => {
+  try{
+        res.status(200).json({ "slackUsername": "Pauli", 
+                              "backend": true, 
+                              "age": 26, 
+                              "bio": "I am a backend dev and I want to be awesome at it" }
+                            )
+    }catch(error){
+        res.status(500).json(error)
+    }
+})
 });
 
 routes.post('/', (req,res) => {
