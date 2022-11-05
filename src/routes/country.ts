@@ -3,17 +3,18 @@ import { CountryModel, ICountry } from "../models/country";
 
 const routes = Router();
 
-routes.get("/",(req, res) => {
-  try{
-        res.status(200).json({ "slackUsername": "Pauli", 
-                              "backend": true, 
-                              "age": 26, 
-                              "bio": "I am a backend dev and I want to be awesome at it" }
-                            )
+routes.get('/', (req, res) =>{
+    try{
+        res.status(200).json({
+            "slackUsername":"JerryG",
+            "backend": true,
+            "age": 24,
+            "bio": "I'm a self-taught developer looking to break into tech. Javascript is my love language."
+        })
     }catch(error){
         res.status(500).json(error)
     }
-});
+})
 
 routes.post('/', (req,res) => {
   
