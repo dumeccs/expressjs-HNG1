@@ -13,7 +13,6 @@ routes.get("/",(req, res) => {
     }catch(error){
         res.status(500).json(error)
     }
-})
 });
 
 routes.post('/', (req,res) => {
