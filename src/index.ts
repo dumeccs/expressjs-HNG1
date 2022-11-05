@@ -45,11 +45,11 @@ app.post('/', (req,res) => {
     // }
 
     console.log(req.body)
-    // res.status(200).json({
-    //     "slackUsername":"JerryG",
-    //     "result": result,
-    //     "operation_type": req.body.operation_type
-    // })
+    res.status(200).json({
+        "slackUsername":"JerryG",
+        "result": result,
+        // "operation_type": req.body.operation_type
+    })
 }catch(error){
     res.status(500).json(error)
 }
