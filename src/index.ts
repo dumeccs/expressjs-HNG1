@@ -3,7 +3,6 @@ import express from "express";
 import countryRoutes from "./routes/country";
 
 const app = express();
-const cors = require('cors');
 const port = process.env.PORT || 3333;
 
 
