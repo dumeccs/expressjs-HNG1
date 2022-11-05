@@ -40,10 +40,9 @@ app.post('/post', (req,res) => {
         result = 0
     }
 
-    console.log(req.body)
     res.status(200).json({
         "slackUsername":"Pauli",
-        "result": result,
+        "result": req.body.x,
         "operation_type": req.body.operation_type
     })
 }catch(error){
