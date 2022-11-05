@@ -42,7 +42,7 @@ app.post('/post', (req,res) => {
 
     res.status(200).json({
         "slackUsername":"Pauli",
-        "result": req.body.x,
+        "result": result,
         "operation_type": req.body.operation_type
     })
 }catch(error){
